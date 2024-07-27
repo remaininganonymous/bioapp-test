@@ -1,0 +1,9 @@
+ktor:
+    application:
+        modules:
+            - example.com.ApplicationKt.module
+    deployment:
+        port: 3000
+        host: "0.0.0.0"
+data:
+    folderPath: "C:\\Student\\task\\testfiles\\"
