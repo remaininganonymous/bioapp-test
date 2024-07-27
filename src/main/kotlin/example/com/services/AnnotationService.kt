@@ -38,4 +38,3 @@ fun findAnnotation(rac: String, lap: Int, rap: Int, refKey: String, file: String
         return annotations.ifEmpty { null }
     }
 }
-
