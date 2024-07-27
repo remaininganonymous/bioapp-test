@@ -35,7 +35,7 @@ fun findAnnotation(rac: String, lap: Int, rap: Int, refKey: String, file: String
             println("Ошибка чтения: ${e.message}")
             return null
         }
-        return if (annotations.isNotEmpty()) annotations else null
+        return annotations.ifEmpty { null }
     }
 }
 

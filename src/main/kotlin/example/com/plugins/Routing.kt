@@ -15,7 +15,7 @@ fun Application.configureRouting() {
     } //TODO
     routing {
         get("/about") {
-            call.respondText("Hello World!")
+            call.respondText("REST API для предоставления информации об аннотации генетических вариантов на Kotlin/Ktor\n")
         }
 
         get("/info") {
@@ -35,11 +35,11 @@ fun Application.configureRouting() {
 
             if (missingParams.isNotEmpty()) {
                 if (missingParams.size == 1) {
-                    call.respond(HttpStatusCode.BadRequest,"Не был предоставлен параметр: ${missingParams[0]}")
+                    call.respond(HttpStatusCode.BadRequest,"400 Bad Request: Не был предоставлен параметр: ${missingParams[0]}")
                 } else {
-                    call.respond(HttpStatusCode.BadRequest,"Не был(-и) предоставлен(-ы) параметр(-ы): ${missingParams.joinToString(", ")}")
+                    call.respond(HttpStatusCode.BadRequest,"400 Bad Request: Не был(-и) предоставлен(-ы) параметр(-ы): ${missingParams.joinToString(", ")}")
                 }
-                return@get // исключаем дальнейшее выполнение кода, если введены не все параметры
+                return@get
             }
 
             rac?.let { r ->
@@ -47,11 +47,15 @@ fun Application.configureRouting() {
                     rap?.let { rp ->
                         refKey?.let { rk ->
                             file?.let { file ->
-                                val result = findAnnotation(r, l.toInt(), rp.toInt(), rk, file, call.application.environment)
-                                if (result != null) {
-                                    call.respond(result)
-                                } else {
-                                    call.respond(HttpStatusCode.NotFound, "Ни одна аннотация не была найдена для введенного запроса")
+                                try {
+                                    val result = findAnnotation(r, l.toInt(), rp.toInt(), rk, file, call.application.environment)
+                                    if (result != null) {
+                                        call.respond(result)
+                                    } else {
+                                        call.respond(HttpStatusCode.NotFound, "404 Not Found: Ни одна аннотация не была найдена для введенного запроса")
+                                    }
+                                } catch (e: IllegalArgumentException) {
+                                    call.respond(HttpStatusCode.BadRequest, "400 Bad Request: ${e.message}")
                                 }
                             }
                         }

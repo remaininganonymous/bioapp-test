@@ -4,10 +4,20 @@ val logback_version: String by project
 val ktor_version: String by project
 
 plugins {
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     kotlin("jvm") version "2.0.0"
     id("io.ktor.plugin") version "2.3.12"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.0.0"
 }
+
+tasks {
+    shadowJar {
+        archiveBaseName.set("your-application") // Устанавливаем базовое имя JAR файла
+        archiveVersion.set("") // Убираем версию из имени файла
+        archiveClassifier.set("all") // Добавляем суффикс 'all' к имени файла
+    }
+}
+
 
 group = "example.com"
 version = "0.0.1"
