@@ -19,6 +19,7 @@
 Спасибо за внимание. Готов выслушать замечания, но все же надеюсь, что вам понравится.
 
 **UPD: Docker. Инструкция.**
+Образ: https://hub.docker.com/layers/samsonik2012/ktor-sample-app/v1.3/images/sha256:eb101551b448213a77e52528f3c5a07a95856967f83cfa113208c665001e1629?uuid=0178BFC2-7BF0-4D52-8C54-8F851067E8E4
 Для начала убедимся, что такой образо существует на DockerHub, воспользовавшись командой:
 docker search samsonik2012/ktor-sample-app
 
