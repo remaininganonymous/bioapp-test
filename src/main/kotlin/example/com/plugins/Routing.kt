@@ -52,7 +52,7 @@ fun Application.configureRouting() {
                                     if (result != null) {
                                         call.respond(result)
                                     } else {
-                                        call.respond(HttpStatusCode.NotFound, "404 Not Found: Ни одна аннотация не была найдена для введенного запроса")
+                                        call.respond(HttpStatusCode.NotFound, "404 Not Found: Для введенного запроса аннотаций не найдено")
                                     }
                                 } catch (e: IllegalArgumentException) {
                                     call.respond(HttpStatusCode.BadRequest, "400 Bad Request: ${e.message}")
