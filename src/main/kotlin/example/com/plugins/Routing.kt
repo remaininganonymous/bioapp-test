@@ -37,7 +37,7 @@ fun Application.configureRouting() {
                 if (missingParams.size == 1) {
                     call.respond(HttpStatusCode.BadRequest,"400 Bad Request: Не был предоставлен параметр: ${missingParams[0]}")
                 } else {
-                    call.respond(HttpStatusCode.BadRequest,"400 Bad Request: Не был(-и) предоставлен(-ы) параметр(-ы): ${missingParams.joinToString(", ")}")
+                    call.respond(HttpStatusCode.BadRequest,"400 Bad Request: Не были предоставлены параметры: ${missingParams.joinToString(", ")}")
                 }
                 return@get
             }
