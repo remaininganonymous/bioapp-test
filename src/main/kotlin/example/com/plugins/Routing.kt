@@ -7,7 +7,7 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import java.io.IOException
-
+//
 fun validateParams(call: ApplicationCall): List<String> {
     val missingParams = mutableListOf<String>()
     if (call.request.queryParameters["rac"] == null) missingParams.add("rac")
