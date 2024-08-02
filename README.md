@@ -18,18 +18,18 @@
 Спасибо за внимание. Готов выслушать замечания, но все же надеюсь, что вам понравится.
 
 **UPD: Docker. Инструкция.**
-Образ: https://hub.docker.com/layers/samsonik2012/ktor-sample/v1.4/images/sha256:c3bdce7a93f2d7564b7ee6f6f9ba62f035d2a9a9ff0a3bc0201ba11d707da0f9?uuid=0178BFC2-7BF0-4D52-8C54-8F851067E8E4
+Образ: https://hub.docker.com/layers/samsonik2012/myktorapp/latest/images/sha256:4425d8d4896f80e6a8007a8eb66cab14d7b2736aa1a33a5719a10cf67db1dd80?uuid=0178BFC2-7BF0-4D52-8C54-8F851067E8E4
 Для начала убедимся, что такой образ существует на DockerHub, воспользовавшись командой:
-docker search samsonik2012/ktor-sample
+docker search samsonik2012/myktorapp
 
 Если нашлось, то смело загружаем себе с помощью:
-docker pull samsonik2012/ktor-sample
+docker pull samsonik2012/myktorapp
 
 Проверяем наличие образа у себя:
 docker images
 
 Запускаем образ в контейнере, при этом монтируя директорию с файлами аннотаций как показано здесь:
-docker run -v [путь до вашей папки с файлами (в моем случае это C:/Student/task/annotations)]:/app/annotations -p 3000:3000 d9f9655c139c
+docker run -v [путь до вашей папки с файлами (в моем случае это C:/Student/task/annotations)]:/app/annotations -p 3000:3000 [image id]
 
 Приложение запускается, переходим на localhost:3000/about для проверки работоспособности, далее в соответствии с вышеизложенными инструкциями переходим на .../info?.. . Если все сделали как надо, то должно работать корректно.
 
